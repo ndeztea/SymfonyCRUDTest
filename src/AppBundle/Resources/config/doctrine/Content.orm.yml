@@ -1,0 +1,25 @@
+AppBundle\Entity\Content:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\ContentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+            column: Title
+        content:
+            type: text
+            column: Content
+        createdDate:
+            type: datetime
+            column: created_date
+        publishedDate:
+            type: datetime
+            column: published_date
+    lifecycleCallbacks: {  }

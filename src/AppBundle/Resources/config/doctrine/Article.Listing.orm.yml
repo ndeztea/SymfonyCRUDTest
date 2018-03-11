@@ -1,0 +1,24 @@
+AppBundle\Entity\Article\Listing:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\Article\ListRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '255'
+        category:
+            type: string
+            length: '255'
+        publishedDate:
+            type: datetime
+            column: published_date
+        createdDate:
+            type: datetime
+            column: created_date
+    lifecycleCallbacks: {  }

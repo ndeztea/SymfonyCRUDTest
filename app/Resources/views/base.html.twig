@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div>
+            <a href="{{ path('article') }}">Home</a>
+            <a href="{{ path('article_form') }}">+ Add New Article</a>
+        </div>
+        {% for flashMessage in app.session.flashbag.get('message') %}
+            <p>{{ flashMessage }}</p>
+        {% endfor %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
