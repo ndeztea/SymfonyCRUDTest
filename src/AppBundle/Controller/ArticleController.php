@@ -58,6 +58,35 @@ class ArticleController extends Controller
     }
 
     /**
+     * @Route("/view/{id}",name="article_view")
+     */
+    public function view($id='')
+    {
+        $title = $content = '';
+        if($id){
+            $this->entityManager = $this->getDoctrine()->getManager();
+            $content = $this->entityManager->getRepository(Content::class);
+            $article = $content->find($id);
+            $title = $article->getTitle();
+            $content = $article->getContent();
+            $published_date = $article->getPublishedDate();
+        }
+
+        if(empty($content)){
+            $session->getFlashBag()->set('message', 'Data is not exist');
+            $url = $this->generateUrl('article');
+            return new RedirectResponse($url);
+        }
+
+        $data['id'] = $id;
+        $data['title'] = $title;
+        $data['content'] = $content;
+        $data['published_date'] = $published_date;
+        return $this->render('article/view.html.twig', $data);
+    }
+
+
+    /**
      * @Route("/store",name="article_store")
      */
     public function store(Request $request)

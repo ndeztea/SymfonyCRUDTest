@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Article Detail</h1>
+<strong>{{ title }}</strong><br>
+<i>Posted : {{ published_date|date("l, d F Y") }}</i>
+
+<p>{{ content }}</p>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

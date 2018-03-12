@@ -5,9 +5,9 @@
 	{% for article in articles %}
 	<p>
 		<strong>{{article.title}} </strong>
-		<br>{{article.content}}
+		<br>{{ article.content|length > 150 ? article.content|slice(0, 150) ~ '...' : article.content  }}
 		<br>
-		<a href="{{path('article_form',{ id : article.id })}}">[edit]</a> <a href="{{path('article_delete',{ id : article.id })}}">[delete]</a>
+		 <a href="{{path('article_view',{ id : article.id })}}">[view detail]</a> <a href="{{path('article_form',{ id : article.id })}}">[edit]</a> <a href="{{path('article_delete',{ id : article.id })}}">[delete]</a>
 
 	</p>
 	{% endfor %}
